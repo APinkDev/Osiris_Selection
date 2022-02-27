@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
+
+body, html {
+  top: 0;
+  margin: 0;
+  height: 100vh;
+  cursor: crosshair;
+}
+
+h1 {
+  margin: 0;
+}
+
+.start__complete {
+  height: 100vh;
+  background-image: url("https://64.media.tumblr.com/1bdd782ba29e7df50c4599b0e443f3b8/tumblr_pops7pymfG1xqepp2o1_1280.gifv");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: Flex;
+}
+
+.start__left {
+  display: flex;
+  /* border: 1px solid green; */
+  flex-direction: column;
+  height: 100%;
+  width: 120vh;
+  justify-content: space-around;
+}
+
+.start__right {
+  display: flex;
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 120vh;
+}
+
+.start__right__img{
+  transition: all 1s;
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid yellow; */
+  border-radius: 450px;
+  
+}
+.start__right__img:hover{
+  transition: all 1s;
+  height: 100%;
+  width: 100%;
+  filter: blur(100px);
+
+}
+.Link{
+  text-decoration: none;
+}
+.start__left__Title{
+  transition: all 1s;
+  font-size: 10vh;
+  border: 2px solid yellow;
+  border-radius: 999px;
+  font-family: 'Shizuru', cursive;
+  word-spacing: -60px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+.start__left__Title:hover{
+  transition: all 1s;
+  background-color: rgba(128, 128, 128, 0.8);
+  font-size: 12vh;
+  color: rgb(251, 255, 0);
+  padding: 20px;
+  border: 2px solid rgb(250, 250, 166);
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.start__left__Text{
+  font-size: 4vh;
+  margin-top: -160px;
+  font-family: 'Shizuru', cursive;
+  font-weight: bold;
+  color: black;
+}
+
+/* .start__left {
+  width: 80vh;
+  height: 100vh;
+  align-self: center;
+  border: 1rem solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start__right {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 120vh;
+  border: 1rem solid #111;
+  flex-direction: column;
+  justify-content: space-between;
+} */
