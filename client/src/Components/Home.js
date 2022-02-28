@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   const foodstate = useSelector((state) => state.FoodsState);
-  // console.log(foodstate)
+  console.log(foodstate)
   // const [container, setContainer] = useState([]);
   let container = foodstate
 

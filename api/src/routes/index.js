@@ -81,7 +81,7 @@ routes.route("/recipes").get(async (req, res) => {
       let recipeSearch = await allRequest();
       let dbSearch = await Recipe.findAll({ include: { model: DietTypes } });
       let cont = dbSearch.map((e) => ({
-        id: e.id,
+        id: e.ID,
         title: e.title,
         image: e.image,
         dishTypes: e.dishTypes,

@@ -30,7 +30,7 @@ export const SearchFood = (title) => {
 
 export const Detailed = (id) => {
     return async (dispatch) => {
-        console.log("existoooooo:")
+        // console.log("existoooooo:")
         const response = await axios.get(`http://localhost:3001/recipes/${id}`)
         console.log("response:", response)
         if (response?.data) {
@@ -45,7 +45,7 @@ export const Detailed = (id) => {
 export const GetDiets = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`http://localhost:3001/diets`)
-        console.log("response:", response)
+        // console.log("response:", response)
         if (response?.data) {
             dispatch({
                 type: "GETDIETS",
@@ -57,7 +57,7 @@ export const GetDiets = (id) => {
 export const GetCuisines = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`http://localhost:3001/cuisines`)
-        console.log("response:", response)
+        // console.log("response:", response)
         if (response?.data) {
             dispatch({
                 type: "GETCUISINES",
@@ -69,7 +69,7 @@ export const GetCuisines = (id) => {
 export const GetDishTypes = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`http://localhost:3001/dishtypes`)
-        console.log("response:", response)
+        // console.log("response:", response)
         if (response?.data) {
             dispatch({
                 type: "GETDISHTYPES",
@@ -82,7 +82,7 @@ export const GetDishTypes = (id) => {
 export const Post = function (inputs) {
     return function (dispatch) {
         return axios.post("/create", inputs).then((response) => {
-            console.log(response)
+            // console.log(response)
         })
     }
 }

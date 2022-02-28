@@ -55,9 +55,16 @@ if (detailed.glutenFree === true){
     results.innerHTML = string;
     results.innerHTML =    results.textContent;
   }
-  let DietArray = detailed.diets && detailed.diets.length? detailed.diets.map((e)=>e):detailed.genres
+  let DietArray = []
+  if (detailed.DietTypes){
+    DietArray = detailed.DietTypes && detailed.DietTypes.length? detailed.DietTypes.map((e)=>e.name):detailed.DietTypes
+  }else if(detailed.diets){
+    DietArray = detailed.diets && detailed.diets.length? detailed.diets.map((e)=>e):detailed.DietTypes
+  }
+
+  // let DietArray = detailed.diets && detailed.diets.length? detailed.diets.map((e)=>e):detailed.DietTypes
   // let GenArray = detailed.diets
-  // console.log(GenArray)
+  console.log(DietArray)
   let dishArray = []
   if (typeof(detailed.dishTypes) === "string" && detailed.dishTypes.includes(",")){
     dishArray=detailed.dishTypes.split(",");

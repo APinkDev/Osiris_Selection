@@ -34,16 +34,16 @@ const Validate = (inputs) => {
   else if (!inputs.healthScore) {
     error.healthScore = "healthScore required"
   }
-  else if (!inputs.veryPopular) {
+  else if (inputs.veryPopular === undefined) {
     error.veryPopular = "veryPopular required"
   }
-  else if (!inputs.vegetarian) {
+  else if (inputs.vegetarian === undefined) {
     error.vegetarian = "vegetarian required"
   }
-  else if (!inputs.vegan) {
+  else if (inputs.vegan === undefined) {
     error.vegan = "vegan required"
   }
-  else if (!inputs.glutenFree) {
+  else if (inputs.glutenFree === undefined) {
     error.glutenFree = "glutenFree required"
   }
   else if (!inputs.name) { //son las dietas
@@ -57,12 +57,9 @@ export default function Create() {
   const dietitas = useSelector((state) => state.AllDiets);
   const cuisinitos = useSelector((state) => state.Allcuisines);
   const tipicitos = useSelector((state) => state.Alldishtypes);
-  // console.log(dietitas)
-  // console.log("cuisines:",cuisinitos)
-  // console.log("ticipito:",tipicitos)
-
-
-
+  // console.log("dietitas:",dietitas)
+  // console.log("cuisinitos:",cuisinitos)
+  // console.log("tipiquitos:", tipicitos)
 
 
   React.useEffect(() => {
@@ -85,26 +82,24 @@ export default function Create() {
     pricePerServing: "",
     spoonacularScore: "",
     healthScore: "",
-    veryPopular: false,
-    vegetarian: false,
-    vegan: false,
-    glutenFree: false,
+    veryPopular: undefined,
+    vegetarian: undefined,
+    vegan: undefined,
+    glutenFree: undefined,
     name: [], //name son las dietas
   })
-  // console.log("imput cusiine:",inputs.cuisines)
-
-
-
-  console.log("supuestas dietas", inputs.name)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     let error = Object.keys(Validate(inputs))
     if (error.length !== 0) {
+      // console.log("resultado final malo: ", inputs )
+      // console.log("error", error)
       alert('Please fill the options~')
     }
     else {
       console.log("resultado final: ", inputs)
+
       alert("Well done! uwu")
       dispatch(Post(inputs))
       setInputs({
@@ -117,15 +112,15 @@ export default function Create() {
         pricePerServing: "",
         spoonacularScore: "",
         healthScore: "",
-        veryPopular: false,
-        vegetarian: false,
-        vegan: false,
-        glutenFree: false,
+        veryPopular: undefined,
+        vegetarian: undefined,
+        vegan: undefined,
+        glutenFree: undefined,
         name: [], //name son las dietas
       })
     }
   }
-
+  // console.log("popular", inputs.veryPopular)
   return (
     <div className="Create">
       <h1 className="Create__Title">Create a food</h1>
@@ -170,7 +165,7 @@ export default function Create() {
             ))}
             </select>
               
-            {/* <select
+            <select
               className="Create__cuisines"
               type="select-multiple"
               name="cuisines"
@@ -180,11 +175,11 @@ export default function Create() {
                 setInputs({ ...inputs, [evt.target.name]: inputs.cuisines.concat(evt.target.value) })
               }
             >{cuisinitos.map((e, index) => (
-              <option key={index} value={e.name}>
-                {e.name}
+              <option key={index} value={e}>
+                {e}
               </option>
             ))}
-            </select> */}
+            </select>
 
 
 
@@ -243,6 +238,7 @@ export default function Create() {
                 setInputs({ ...inputs, [evt.target.name]: evt.target.value })
               }
             >
+              <option value={undefined}>Popular?</option>
               <option value={true}>Yes!</option>
               <option value={false}>Nope</option>
             </select>
@@ -250,6 +246,7 @@ export default function Create() {
             <select
               name="vegetarian"
               type="select-multiple"
+              defaultValue={"Vegetarian"}
               multiple={false}
               placeholder="is this Vegetarian?"
               value={inputs.vegetarian}
@@ -257,6 +254,7 @@ export default function Create() {
                 setInputs({ ...inputs, [evt.target.name]: evt.target.value })
               }
             >
+              <option value={undefined}>Vegetarian?</option>
               <option value={true}>Yes!</option>
               <option value={false}>Nope</option>
             </select>
@@ -271,6 +269,7 @@ export default function Create() {
                 setInputs({ ...inputs, [evt.target.name]: evt.target.value })
               }
             >
+              <option value={undefined}>Vegan?</option>
               <option value={true}>Yes!</option>
               <option value={false}>Nope</option>
             </select>
@@ -285,6 +284,7 @@ export default function Create() {
                 setInputs({ ...inputs, [evt.target.name]: evt.target.value })
               }
             >
+              <option value={undefined}>GlutenFree?</option>
               <option value={true}>Yes!</option>
               <option value={false}>Nope</option>
             </select>
@@ -300,8 +300,8 @@ export default function Create() {
                 setInputs({ ...inputs, [evt.target.name]: inputs.name.concat(evt.target.value) })
               }
             >{dietitas.map((e, index) => (
-              <option key={index} value={e}>
-                {e}
+              <option key={index} value={e.name}>
+                {e.name}
               </option>
             ))}
             </select>

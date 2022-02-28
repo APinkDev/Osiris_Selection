@@ -15,7 +15,17 @@ export default function Dog({ id, title, image, diets, spoonacularScore }) {
                             {title},
                             Score: {spoonacularScore}
                         </div>
-                        <div><span className="Dog__temp">{diets }</span></div>
+                        <div className="Videogame__Genres">
+                            {Array.isArray(diets) ? (
+                                diets.map((a) => (
+                                    <li key={a}>
+                                        <span>{a} </span>
+                                    </li>
+                                ))
+                            ) : (
+                                <span>No genres yet</span>
+                            )}
+                        </div>
                     </div>
                 </div>
             </Link>
