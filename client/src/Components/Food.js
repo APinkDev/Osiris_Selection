@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-export default function Dog({ id, title, image, diets, spoonacularScore }) {
+export default function Dog({ id, title, image, diets, healthScore }) {
     // console.log("dietas: ", diets)
     return (
         <div>
@@ -13,7 +13,7 @@ export default function Dog({ id, title, image, diets, spoonacularScore }) {
                     <div className="Dog__ContainerImg">
                         <div className="Dog__info">
                             {title},
-                            Score: {spoonacularScore}
+                            Score: {healthScore}❤
                         </div>
                         <div className="Videogame__Genres">
                             {Array.isArray(diets) ? (

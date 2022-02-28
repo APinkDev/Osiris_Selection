@@ -1,0 +1,27 @@
+.AZ__div {
+    margin: 20px;
+    /* border: 1px solid #111; */
+  }
+  .AZ__button {
+    color: rgb(200, 200, 200);
+    font-size: 2.5vh;
+    width: 20vh;
+    height: 7vh;
+    border: 1px solid #727272;
+    border-radius: 15px;
+  }
+  .AZ__button:hover {
+    color: rgb(92, 92, 92);
+  }
+  
+  /* .FIltred__Filter {
+    color: rgb(200, 200, 200);
+    font-size: 2.5vh;
+    height: 7vh;
+    border: 1px solid #727272;
+    border-radius: 15px;
+  }
+  .FIltred__Filter:hover {
+    color: rgb(92, 92, 92);
+  }
+   */

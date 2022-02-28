@@ -3,16 +3,25 @@ import "./Home.css"
 import {
   FoodsAll,
   SearchFood,
+  Filtrated,
 } from "../Store/actions"
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Foods from "./Foods.js"
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
+import Filtredbuttom from "./Filtredbuttom"
 
 
 export default function Home() {
   const dispatch = useDispatch();
+
+  const foodstate = useSelector((state) => state.FoodsState);
+  const filter = useSelector((state) => state.Filtred);
+
+  // console.log(foodstate)
+  // const [container, setContainer] = useState([]);
+  const [container, setContainer] = useState([]);
 
   useEffect(() => {
     dispatch(FoodsAll());
@@ -22,10 +31,15 @@ export default function Home() {
     title === "" ? dispatch(FoodsAll()) : dispatch(SearchFood(title));
   };
 
-  const foodstate = useSelector((state) => state.FoodsState);
-  console.log(foodstate)
-  // const [container, setContainer] = useState([]);
-  let container = foodstate
+  React.useEffect(() => {
+    if (foodstate && filter.length === 0) {
+      setContainer(foodstate);
+      // alert('algo')
+    } else {
+      setContainer(filter);
+    }
+  }, [filter, foodstate]);
+
 
   const [loading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,6 +52,9 @@ export default function Home() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const Filtred = (arg) => {
+    dispatch(Filtrated(arg))
+  }
 
 
 
@@ -48,6 +65,11 @@ export default function Home() {
       <h1>Osiris Selection</h1>
       <div>
         <SearchBar search={Search} className="Home_search__search" />
+      </div>
+      <div>
+        <Filtredbuttom
+          Filtred={Filtred}
+        />
       </div>
       <div>
         <Link to="/create">

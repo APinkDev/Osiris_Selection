@@ -15,7 +15,7 @@ export default function Foods({ foodsInfo, loading }) {
                     title={e.title}
                     image={e.image}
                     diets={e.diets}
-                    spoonacularScore={e.spoonacularScore}
+                    healthScore={e.healthScore}
                 />
             ))}
 

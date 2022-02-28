@@ -86,3 +86,10 @@ export const Post = function (inputs) {
         })
     }
 }
+
+export const Filtrated = (arg) => {
+    return {
+      type: "FILTRATED",
+      payload: arg,
+    };
+  };
