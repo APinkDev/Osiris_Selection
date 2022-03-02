@@ -89,7 +89,18 @@ export const Post = function (inputs) {
 
 export const Filtrated = (arg) => {
     return {
-      type: "FILTRATED",
+        type: "FILTRATED",
+        payload: arg,
+    }
+}
+
+export const DietFiltrated = (arg) => {
+    console.log("holiwis actions")
+    console.log("holiwis actions2")
+    console.log("holiwis action3s")
+    console.log("holiwis actions4")
+    return {
+      type: "DIETFILTRATED",
       payload: arg,
     };
   };

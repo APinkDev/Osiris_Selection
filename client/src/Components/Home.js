@@ -4,6 +4,9 @@ import {
   FoodsAll,
   SearchFood,
   Filtrated,
+  DietFiltrated,
+  GetDiets,
+
 } from "../Store/actions"
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,21 +14,24 @@ import Foods from "./Foods.js"
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
 import Filtredbuttom from "./Filtredbuttom"
+import Dietbuttom from "./Dietbuttom"
 
 
 export default function Home() {
   const dispatch = useDispatch();
 
-  const foodstate = useSelector((state) => state.FoodsState);
-  const filter = useSelector((state) => state.Filtred);
-
-  // console.log(foodstate)
-  // const [container, setContainer] = useState([]);
-  const [container, setContainer] = useState([]);
-
   useEffect(() => {
     dispatch(FoodsAll());
   }, [dispatch]);
+
+  const foodstate = useSelector((state) => state.FoodsState);
+  const filter = useSelector((state) => state.Filtred);
+
+
+  const [container, setContainer] = useState([]);
+  console.log(container)
+
+
 
   const Search = (title) => {
     title === "" ? dispatch(FoodsAll()) : dispatch(SearchFood(title));
@@ -43,7 +49,7 @@ export default function Home() {
 
   const [loading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [foodsPerPage] = useState(10);
+  const [foodsPerPage] = useState(9);
 
   const indexOfLastPost = currentPage * foodsPerPage;
   const indexOfFirstPost = indexOfLastPost - foodsPerPage;
@@ -55,31 +61,50 @@ export default function Home() {
   const Filtred = (arg) => {
     dispatch(Filtrated(arg))
   }
+  const FiltratedDiets = (arg) => {
+    console.log("exaaisto");
+    console.log("exist222o");
+    dispatch(DietFiltrated(arg));
+  };
 
+  const GettingDiets = (arg) => {
+    dispatch(GetDiets(arg));
+  };
 
-
-
+  dispatch(GetDiets());
 
   return (
-    <div className="Background_Home">
-      <h1>Osiris Selection</h1>
-      <div>
-        <SearchBar search={Search} className="Home_search__search" />
-      </div>
-      <div>
+    <body className="Home__ALL">
+      <div className="Home__Banner">
+        <Link to="/" className="Home__GoBack">
+          💲pay and go💲
+        </Link>
+        <Dietbuttom className="Home__FiltratedDiets"
+          GettingDiets={GettingDiets}
+          FiltratedDiets={FiltratedDiets} />
         <Filtredbuttom
-          Filtred={Filtred}
-        />
-      </div>
-      <div>
-        <Link to="/create">
-          <h2>Create</h2>
+          Filtred={Filtred} />
+        <h1 className="Home__title">Osiris Selection</h1>
+        <SearchBar search={Search} className="Home_search__search" />
+        <Link to="/create" className="Home__Order">
+          🍔Custom Order🍕
         </Link>
       </div>
-      <div>
-        <Foods foodsInfo={currentPost} loading={loading} />
+
+
+
+      <div className="Home__Center">
+        <div className="Home__Center__Centrated">
+          <div className="Home__Center__Food">
+            <Foods foodsInfo={currentPost} loading={loading} />
+          </div>
+
+        </div>
       </div>
-      <div>
+
+
+
+      <div className="Home__buttom">
         <Pagination
           className="Home__pagination__li"
           foodsPerPage={foodsPerPage}
@@ -87,6 +112,7 @@ export default function Home() {
           paginate={paginate}
         />
       </div>
-    </div>
-  );
+    </body>
+
+  )
 };

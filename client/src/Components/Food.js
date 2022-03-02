@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Food.css"
 
 
 export default function Dog({ id, title, image, diets, healthScore }) {
@@ -8,10 +9,10 @@ export default function Dog({ id, title, image, diets, healthScore }) {
         <div>
             <Link to={`details/${id}`}>
                 <div
-                    className="Dog__All"
+                    className="Videogame__All"
                     style={{ backgroundImage: `url('${image}')` }}>
                     <div className="Dog__ContainerImg">
-                        <div className="Dog__info">
+                        <div className="Videogame__Name">
                             {title},
                             Score: {healthScore}❤
                         </div>

@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     dishTypes: {
       type: DataTypes.TEXT,
@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     readyInMinutes: {
       type: DataTypes.FLOAT,
@@ -48,9 +48,9 @@ module.exports = (sequelize) => {
     glutenFree: {
       type: DataTypes.BOOLEAN,
     },
-    // analyzedInstructions: {
-    //   type: DataTypes.STRING
-    // }
+    analyzedInstructions: {
+      type: DataTypes.TEXT
+    }
 
   });
 };

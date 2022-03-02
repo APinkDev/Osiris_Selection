@@ -1,9 +1,9 @@
 const { default: axios } = require("axios");
 const { Recipe } = require("./db.js");
 const { DietTypes } = require("./db.js");
-//0892681e63aa40408b5c947b8cc02a41
 //def5528726714b01b470f80fdc78405c
-//c073fd7298cb4ce6b1accad224584d45
+//def5528726714b01b470f80fdc78405c
+//0892681e63aa40408b5c947b8cc02a41
 //4bc14c003b50492b94515a76c80545c2
 //4bc14c003b50492b94515a76c80545c2
 
@@ -13,7 +13,7 @@ module.exports = {
     try {
       let cont = axios
         .get(
-          `https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=dcee4336578148799c63a2c68cef170a&addRecipeInformation=true`
+          `https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`
         )
         .then((resultado) => resultado.data.results)
         .then((res) => {
@@ -24,7 +24,7 @@ module.exports = {
               title: result.title,
               image: result.image,
               dishTypes: result.dishTypes,
-              cuisines: result.cuisines,
+              cuisines: result.cuisines.length === 0 ? ["no cuisines yet"] : result.cuisines,
               summary: result.summary,
               readyInMinutes: result.readyInMinutes,
               pricePerServing: result.pricePerServing,
@@ -35,6 +35,7 @@ module.exports = {
               vegan: result.vegan,
               glutenFree: result.glutenFree,
               diets: result.diets,
+              analyzedInstructions: result.analyzedInstructions[0]?.steps.map((e)=>e.step)
             })
           );
           return storage;
@@ -46,7 +47,7 @@ module.exports = {
   },
 
   askByName: async (title) => {
-    let cont = axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=dcee4336578148799c63a2c68cef170a&addRecipeInformation=true`)
+    let cont = axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
       .then((resultado) => (resultado = resultado.data.results))
       .then((resort) => {
         let comida = [];
@@ -56,7 +57,7 @@ module.exports = {
             title: elm.title,
             image: elm.image,
             dishTypes: elm.dishTypes,
-            cuisines: elm.cuisines,
+            cuisines: elm.cuisines.length === 0 ? ["no cuisines yet"] : elm.cuisines,
             summary: elm.summary,
             readyInMinutes: elm.readyInMinutes,
             pricePerServing: elm.pricePerServing,
@@ -67,10 +68,10 @@ module.exports = {
             vegan: elm.vegan,
             glutenFree: elm.glutenFree,
             diets: elm.diets,
-            analyzedInstructions: elm.analyzedInstructions,
+            analyzedInstructions: elm.analyzedInstructions[0]?.steps.map((e)=>e.step)
           })
         )
-        
+
         if (title !== null || title !== undefined) {
           var foods = comida.filter((elm) => elm.title.includes(title));
           // console.log("foods", comida)
@@ -83,7 +84,7 @@ module.exports = {
   AskByID: (id) => {
     let cont = axios
       .get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=dcee4336578148799c63a2c68cef170a`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=def5528726714b01b470f80fdc78405c`
       )
       .then((result) => (result = result.data))
       // .then((result) => (console.log(result)))
@@ -94,7 +95,7 @@ module.exports = {
             title: result.title,
             image: result.image,
             dishTypes: result.dishTypes,
-            cuisines: result.cuisines,
+            cuisines: result.cuisines.length === 0 ? ["no cuisines yet"] : result.cuisines,
             summary: result.summary,
             readyInMinutes: result.readyInMinutes,
             pricePerServing: result.pricePerServing,
@@ -105,7 +106,7 @@ module.exports = {
             vegan: result.vegan,
             glutenFree: result.glutenFree,
             diets: result.diets,
-            analyzedInstructions: result.analyzedInstructions,
+            analyzedInstructions: result.analyzedInstructions[0]?.steps.map((e)=>e.step)
           };
         }
         return property;
@@ -115,14 +116,15 @@ module.exports = {
 
   async createFood(req, res) {
     let { title, image, dishTypes, cuisines, summary, readyInMinutes, pricePerServing, spoonacularScore,
-      veryPopular, healthScore, vegetarian, vegan, glutenFree, name } = req.body; //analyzedInstructions
-      dishTypes = dishTypes.join(", ")
-      cuisines = cuisines.join(", ")
-      console.log("AAAAAAAAAA", dishTypes)
+      veryPopular, healthScore, vegetarian, analyzedInstructions, vegan, glutenFree, name } = req.body; //analyzedInstructions
+    dishTypes = dishTypes.join(", ")
+    cuisines = cuisines.join(", ")
+    analyzedInstructions = analyzedInstructions.join("||| ")
+    // console.log("AAAAAAAAAA", dishTypes)
 
     try {
-      const [key, value] = await Recipe.findOrCreate({ // find or create busca o crea una instancia en sql, key es un booleano que dara 1 o 0 si encuentra un valor con ese stat
-        where: { title },
+      const [key, value] = await Recipe.findOrCreate({ // value es un booleano que indica si encontro o no una cosa devolviendo true o false 
+        where: { title }, //(en este caso, si encontro title, true)y key es el objeto en cuestion que observara value
         defaults: {
           image,
           dishTypes,
@@ -136,7 +138,7 @@ module.exports = {
           vegetarian,
           vegan,
           glutenFree,
-          // analyzedInstructions
+          analyzedInstructions,
         },
       })
       const typos = await DietTypes.findAll({

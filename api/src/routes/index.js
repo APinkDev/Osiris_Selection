@@ -42,7 +42,7 @@ routes.route("/recipes").get(async (req, res) => {
           glutenFree: e.glutenFree,
           diets: e.DietTypes.length === 0
             ? "no dietTypes" : e.DietTypes.map((e) => e.name),
-          analyzedInstructions: e.analyzedInstructions,
+          analyzedInstructions: e.analyzedInstructions
 
         }));
 
@@ -54,8 +54,8 @@ routes.route("/recipes").get(async (req, res) => {
           // console.log("BBBBB", typeof (recipeSearch[0]))
           for (i = 0; i < recipeSearch.length; i++) {
             // if(typeof(recipeSearch[i]) == Object){}
-            console.log("AAAAAAAAAA", typeof (recipeSearch[i]))
-            arrays.push(recipeSearch.pop())
+            // console.log("AAAAAAAAAA", typeof (recipeSearch[i]))
+            arrays.push(recipeSearch.pop()) //para poner todo en un solo array
             i = i - 1
 
           }
@@ -97,7 +97,7 @@ routes.route("/recipes").get(async (req, res) => {
         glutenFree: e.glutenFree,
         diets: e.DietTypes.length === 0
           ? "no dietTypes" : e.DietTypes.map((e) => e.name),
-        analyzedInstructions: e.analyzedInstructions,
+        analyzedInstructions: e.analyzedInstructions
       }));
       cont.map((e) => recipeSearch.push(e))
       // recipeSearch.push(cont);
@@ -109,7 +109,7 @@ routes.route("/recipes").get(async (req, res) => {
 });
 
 routes.route("/recipes/:id").get(async (req, res) => {
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  // console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
   try {
     const { id } = req.params;
     if (!Number.isNaN(Number(id))) {
@@ -131,7 +131,7 @@ routes.route("/diets").get(async (req, res) => { //for in es para objetos y map 
   let check = await DietTypes.findAll();
 
   if (check.length === 0) {
-    let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=dcee4336578148799c63a2c68cef170a&addRecipeInformation=true`)
+    let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
     // console.log(tempApi)
     var tempList = await tempApi.data.results
       .map((n) => n.diets)
@@ -151,7 +151,7 @@ routes.route("/diets").get(async (req, res) => { //for in es para objetos y map 
 })
 
 routes.route("/dishtypes").get(async (req, res) => {
-  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=dcee4336578148799c63a2c68cef170a&addRecipeInformation=true`)
+  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
   var tempList = await tempApi.data.results
     .map((n) => n.dishTypes)
     .join()
@@ -167,7 +167,7 @@ routes.route("/dishtypes").get(async (req, res) => {
 })
 
 routes.route("/cuisines").get(async (req, res) => {
-  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=dcee4336578148799c63a2c68cef170a&addRecipeInformation=true`)
+  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
   var tempList = await tempApi.data.results
     .map((n) => n.cuisines)
     .join()

@@ -1,142 +1,303 @@
 .Create {
-    margin: 0;
-    height: 100vh;
-    background-image: url("https://static3.depositphotos.com/1003372/161/i/950/depositphotos_1617144-stock-photo-sand-background.jpg");
-    background-position: center;
-    background-size: contain;
-    overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  background-image: url("https://t4.ftcdn.net/jpg/02/16/60/71/360_F_216607169_jB7ArpXkkRAPt55HHNIGKBxBtXwAle8L.jpg");
+  background-position: center;
+  /* background-size: contain; */
+  overflow: hidden;
+}
+
+.Create__Title {
+  position: relative;
+  left: 0vw;
+  top: 5vh;
+  text-shadow: 5px 5px rgba(185, 137, 33, 0.774);
+  font-size: 6vh;
+  /* font-family: Arcade_Classic; */
+  animation: jump 2s infinite;
+}
+
+@keyframes jump {
+  0% {
+    top: 5vh;
+    text-shadow: 5px 5px rgba(185, 137, 33, 0.774);
   }
-  
-  .Create__Title {
-    position: relative;
-    left: 37vw;
-    top: 15vh;
-    font-size: 6vh;
-    /* font-family: Arcade_Classic; */
-    animation: jump 2s infinite;
-  }
-  @keyframes jump {
-    0% {
-      top: 15vh;
-    }
-    50% {
-      top: 16vh;
-    }
-    100% {
-      top: 15vh;
-    }
-  }
-  
-  .Create__Container {
-    border: 1px solid rgba(204, 204, 204, 0.411);
-    box-shadow: -0px 5px 10px 5px rgba(255, 255, 255, 0.712);
-    position: relative;
-    border-radius: 20px;
-    height: 60vh;
-    width: 90vh;
-    left: 28vw;
+
+  50% {
     top: 6vh;
+    text-shadow: 5px 5px rgba(185, 137, 33, 0.048);
   }
-  /* Cthulhu_Arcade  Arcade_Classic  Regular_Arcade  Old_Bits */
-  .Create__Text {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    position: absolute;
-    top: 2vh;
-    left: 2vw;
-    height: 5vh;
-    width: 16vw;
+
+  100% {
+    top: 5vh;
+    text-shadow: 5px 5px rgba(185, 137, 33, 0.774);
   }
-  .Create__Rating {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    height: 5vh;
-    width: 8vw;
-    position: absolute;
-    top: 2vh;
-    left: 34vw;
-  }
-  .Create__Date {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    height: 5vh;
-    width: 12vw;
-    position: absolute;
-    top: 2vh;
-    left: 20vw;
-  }
-  
-  .Create__Description {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    height: 30vh;
-    width: 26vw;
-    position: absolute;
-    top: 14vh;
-    left: 2vw;
-  }
-  
-  .Create__Genre {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    height: 6vh;
-    width: 12vw;
-    position: absolute;
-    top: 18vh;
-    left: 30vw;
-  }
-  .Create__Platform {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    height: 6vh;
-    width: 12vw;
-    position: absolute;
-    top: 33vh;
-    left: 30vw;
-  }
-  
-  .Create__URL {
-    font-family: Old_Bits;
-    font-size: 2vh;
-    height: 6vh;
-    width: 26vw;
-    position: absolute;
-    top: 50vh;
-    left: 2vw;
-  }
-  
-  .Create__Create {
-    font-family: Old_Bits;
-    color: rgb(0, 0, 0);
-    background-color: #e16af196;
-    font-size: 4vh;
-    height: 13vh;
-    width: 12.5vw;
-    position: absolute;
-    border-radius: 1vh;
-    top: 45vh;
-    left: 30vw;
-  }
-  .Create__Create:hover {
-    transition: 2s all;
-    background-color: #000000;
-    color: rgb(255, 255, 255);
-    border-radius: 8vh;
-  }
-  .Create__HomeButtom {
-    font-family: Old_Bits;
-    color: rgb(255, 255, 255);
-    background-color: #000000;
-    font-size: 2vh;
-    position: relative;
-    left: 18.5vw;
-    top: 0vh;
-    border-radius: 8vh;
-  }
-  .Create__HomeButtom:hover {
-    transition: 2s all;
-    background-color: #e16af196;
-    color: rgb(0, 0, 0);
-    border-radius: 1vh;
-  }
-  
+}
+
+.Create__Container {
+  transition: 1s all;
+  border: 1px solid rgba(204, 204, 204, 0.411);
+  box-shadow: -0px 5px 10px 5px rgba(255, 255, 255, 0.712);
+  background-color: rgba(107, 95, 69, 0.596);
+  position: relative;
+  border-radius: 20px;
+  height: 70vh;
+  width: 100vh;
+  left: 25vw;
+  top: 4vh;
+}
+
+/* Cthulhu_Arcade  Arcade_Classic  Regular_Arcade  Old_Bits */
+.Create__Text {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  position: absolute;
+  top: 2vh;
+  left: 2vw;
+  height: 5vh;
+  width: 16vw;
+}
+
+.Create__Rating {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  height: 5vh;
+  width: 8vw;
+  position: absolute;
+  top: 2vh;
+  left: 34vw;
+}
+
+.Create__Date {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  height: 5vh;
+  width: 12vw;
+  position: absolute;
+  top: 2vh;
+  left: 20vw;
+}
+
+.Create__Description {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  height: 30vh;
+  width: 26vw;
+  position: absolute;
+  top: 14vh;
+  left: 2vw;
+}
+
+.Create__Genre {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  height: 6vh;
+  width: 12vw;
+  position: absolute;
+  top: 18vh;
+  left: 30vw;
+}
+
+.Create__Platform {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  height: 6vh;
+  width: 12vw;
+  position: absolute;
+  top: 33vh;
+  left: 30vw;
+}
+
+.Create__URL {
+  font-family: Old_Bits;
+  font-size: 2vh;
+  height: 6vh;
+  width: 26vw;
+  position: absolute;
+  top: 50vh;
+  left: 2vw;
+}
+
+.Create__Create {
+  font-family: Old_Bits;
+  color: rgb(0, 0, 0);
+  background-color: #e16af196;
+  font-size: 4vh;
+  height: 13vh;
+  width: 12.5vw;
+  position: absolute;
+  border-radius: 1vh;
+  top: 45vh;
+  left: 30vw;
+}
+
+.Create__Create:hover {
+  transition: 2s all;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border-radius: 8vh;
+}
+
+.Create__HomeButtom {
+  font-family: Old_Bits;
+  transition: 2s all;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  font-size: 2vh;
+  position: relative;
+  right: 40vw;
+  top: 75vh;
+  border-radius: 8vh;
+  height: 8vh;
+}
+
+.Create__HomeButtom:hover {
+  transition: 2s all;
+  background-color: #fbfbfb;
+  color: black;
+  border-radius: 1vh;
+}
+
+/* -------------------- */
+.Create__title {
+  margin: 6vh 2vh 2vh 2vh;
+  width: 34vh;
+  height: 4vh;
+  font-size: 2vh;
+}
+
+.Create__image {
+  margin: 6vh 2vh 2vh 2vh;
+  width: 34vh;
+  height: 4vh;
+  font-size: 2vh;
+}
+
+
+.Create__diets {
+  margin: 5vh;
+  margin: 2vh;
+  width: 20vh;
+  height: 3vh;
+  font-size: 2vh;
+}
+
+.Create__dishTypes {
+  margin: 2vh;
+  width: 20vh;
+  height: 3vh;
+  font-size: 2vh;
+}
+
+.Create__cuisines {
+  margin: 2vh;
+  width: 20vh;
+  height: 3vh;
+  font-size: 2vh;
+}
+
+.Create__readyInMinutes {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__pricePerServing {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__spoonacularScore {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__healthScore {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__Popular {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__Vegetarian {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__Vegan {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.Create__Gluten {
+  margin: 2vh;
+  width: 14vh;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+
+.Create__summary {
+  margin: 2vh;
+  width: 35vh;
+  height: 20vh;
+  font-size: 2vh;
+  overflow: scroll;
+}
+
+.Create__analyzedInstructions {
+  margin: 2vh;
+  width: 35vh;
+  height: 20vh;
+  font-size: 2vh;
+  overflow: scroll;
+}
+.Create__analyzedInstructions__button{
+  transition: all 1s;
+  width: 5vh;
+  height: 5vh;
+  position: relative;
+  top:-12vh;
+  left: 1vh;
+}
+.Create__send {
+  transition: all 1s;
+  font-size: 2vh;
+  height: 5vh;
+  width: 10vw;
+  border-radius: 1vh;
+}
+.Create__send:hover {
+  transition: all 1s;
+  background-color: black;
+  color: aliceblue;
+}
+.Create__analyzedInstructions__button:hover {
+  transition: all 1s;
+  background-color: black;
+  color: aliceblue;
+}

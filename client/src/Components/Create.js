@@ -49,6 +49,9 @@ const Validate = (inputs) => {
   else if (!inputs.name) { //son las dietas
     error.name = "diets required"
   }
+  else if (!inputs.analyzedInstructions) {
+    error.name = "analyzedInstructions required"
+  }
   return error
 }
 
@@ -60,6 +63,7 @@ export default function Create() {
   // console.log("dietitas:",dietitas)
   // console.log("cuisinitos:",cuisinitos)
   // console.log("tipiquitos:", tipicitos)
+
 
 
   React.useEffect(() => {
@@ -87,7 +91,19 @@ export default function Create() {
     vegan: undefined,
     glutenFree: undefined,
     name: [], //name son las dietas
+    analyzedInstructions: [],
   })
+
+
+
+  const PushAnalized = (e) => {
+    let FinalAnalized = document.getElementById('analyzedInstructions')
+    console.log(FinalAnalized.value)
+    // setInputs({ ...inputs, [evt.target.analyzedInstructions]: inputs.analyzedInstructions.concat(evt.target.value) })
+    setInputs({ ...inputs, [FinalAnalized.name]: inputs.analyzedInstructions.concat(FinalAnalized.value) })
+  }
+  console.log("inputs de steps", inputs.cuisines)
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -117,6 +133,7 @@ export default function Create() {
         vegan: undefined,
         glutenFree: undefined,
         name: [], //name son las dietas
+        analyzedInstructions: [],
       })
     }
   }
@@ -131,194 +148,218 @@ export default function Create() {
       <div className="Create__Container">
         <form onSubmit={handleSubmit}>
           <div>
-            <input
-              className="Create__title"
-              type="text"
-              name="title"
-              placeholder="Title of the dish..."
-              value={inputs.title}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
-
-            <input
-              className="Create__image"
-              type="url"
-              name="image"
-              placeholder="image of the dish..."
-              value={inputs.image}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
-
-            <select
-              className="Create__dishTypes"
-              type="select-multiple"
-              name="dishTypes"
-              placeholder="dishTypes of the dish..."
-              value={inputs.dishTypes}
-              onChange={(evt) =>
-                setInputs({ ...inputs, [evt.target.name]: inputs.dishTypes.concat(evt.target.value) })
-              }
-            >{tipicitos.map((e, index) => (
-              <option key={index} value={e}>
-                {e}
-              </option>
-            ))}
-            </select>
-              
-            <select
-              className="Create__cuisines"
-              type="select-multiple"
-              name="cuisines"
-              placeholder="cuisines of the dish..."
-              value={inputs.cuisines}
-              onChange={(evt) =>
-                setInputs({ ...inputs, [evt.target.name]: inputs.cuisines.concat(evt.target.value) })
-              }
-            >{cuisinitos.map((e, index) => (
-              <option key={index} value={e}>
-                {e}
-              </option>
-            ))}
-            </select>
+            <div className="Create__Capa__1">
+              <input
+                className="Create__title"
+                type="text"
+                name="title"
+                placeholder="Title of the dish..."
+                value={inputs.title}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></input>
+              <input
+                className="Create__image"
+                type="url"
+                name="image"
+                placeholder="image of the dish..."
+                value={inputs.image}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></input>
+            </div>
 
 
+            <div className="Create__Capa__2">
+              <select
+                className="Create__diets"
+                type="select-multiple"
+                name="name"
+                placeholder="name of the dish..."
+                value={inputs.name}
+                onChange={(evt) =>
+                  setInputs({ ...inputs, [evt.target.name]: inputs.name.concat(evt.target.value) })
+                }
+              >{dietitas.map((e, index) => (
+                <option key={index} value={e.name}>
+                  {e.name}
+                </option>
+              ))}
+              </select>
 
-            <input
-              className="Create__summary"
-              type="text"
-              name="summary"
-              placeholder="summary of the dish..."
-              value={inputs.summary}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
+              <select
+                className="Create__dishTypes"
+                type="select-multiple"
+                name="dishTypes"
+                placeholder="dishTypes of the dish..."
+                value={inputs.dishTypes}
+                onChange={(evt) =>
+                  setInputs({ ...inputs, [evt.target.name]: inputs.dishTypes.concat(evt.target.value) })
+                }
+              >{tipicitos.map((e, index) => (
+                <option key={index} value={e}>
+                  {e}
+                </option>
+              ))}
+              </select>
 
-            <input
-              className="Create__readyInMinutes"
-              type="number"
-              name="readyInMinutes"
-              placeholder="readyInMinutes of the dish..."
-              value={inputs.readyInMinutes}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
-
-            <input
-              className="Create__pricePerServing"
-              type="number"
-              name="pricePerServing"
-              placeholder="pricePerServing of the dish..."
-              value={inputs.pricePerServing}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
-
-            <input
-              className="Create__spoonacularScore"
-              type="number"
-              name="spoonacularScore"
-              placeholder="spoonacularScore of the dish..."
-              value={inputs.spoonacularScore}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
-
-            <input
-              className="Create__healthScore"
-              type="number"
-              name="healthScore"
-              placeholder="healthScore of the dish..."
-              value={inputs.healthScore}
-              onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
-            ></input>
-
-            <select
-              name="veryPopular"
-              type="select-multiple"
-              multiple={false}
-              placeholder="is this Popular?"
-              value={inputs.veryPopular}
-              onChange={evt =>
-                setInputs({ ...inputs, [evt.target.name]: evt.target.value })
-              }
-            >
-              <option value={undefined}>Popular?</option>
-              <option value={true}>Yes!</option>
-              <option value={false}>Nope</option>
-            </select>
-
-            <select
-              name="vegetarian"
-              type="select-multiple"
-              defaultValue={"Vegetarian"}
-              multiple={false}
-              placeholder="is this Vegetarian?"
-              value={inputs.vegetarian}
-              onChange={evt =>
-                setInputs({ ...inputs, [evt.target.name]: evt.target.value })
-              }
-            >
-              <option value={undefined}>Vegetarian?</option>
-              <option value={true}>Yes!</option>
-              <option value={false}>Nope</option>
-            </select>
-
-            <select
-              name="vegan"
-              type="select-multiple"
-              multiple={false}
-              placeholder="is this Vegan?"
-              value={inputs.vegan}
-              onChange={evt =>
-                setInputs({ ...inputs, [evt.target.name]: evt.target.value })
-              }
-            >
-              <option value={undefined}>Vegan?</option>
-              <option value={true}>Yes!</option>
-              <option value={false}>Nope</option>
-            </select>
-
-            <select
-              name="glutenFree"
-              type="select-multiple"
-              multiple={false}
-              placeholder="is this GlutenFree?"
-              value={inputs.glutenFree}
-              onChange={evt =>
-                setInputs({ ...inputs, [evt.target.name]: evt.target.value })
-              }
-            >
-              <option value={undefined}>GlutenFree?</option>
-              <option value={true}>Yes!</option>
-              <option value={false}>Nope</option>
-            </select>
+              <select
+                className="Create__cuisines"
+                type="select-multiple"
+                name="cuisines"
+                placeholder="cuisines of the dish..."
+                value={inputs.cuisines}
+                onChange={(evt) =>
+                  setInputs({ ...inputs, [evt.target.name]: inputs.cuisines.concat(evt.target.value) })
+                }
+              >{cuisinitos.map((e, index) => (
+                <option key={index} value={e}>
+                  {e}
+                </option>
+              ))}
+              </select>
+            </div>
 
 
-            <select
-              className="Create__diets"
-              type="select-multiple"
-              name="name"
-              placeholder="name of the dish..."
-              value={inputs.name}
-              onChange={(evt) =>
-                setInputs({ ...inputs, [evt.target.name]: inputs.name.concat(evt.target.value) })
-              }
-            >{dietitas.map((e, index) => (
-              <option key={index} value={e.name}>
-                {e.name}
-              </option>
-            ))}
-            </select>
+            <div className="Create__Capa__3">
+              <input
+                className="Create__readyInMinutes"
+                type="number"
+                name="readyInMinutes"
+                placeholder="Ready In:"
+                value={inputs.readyInMinutes}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></input>
+
+              <input
+                className="Create__pricePerServing"
+                type="number"
+                name="pricePerServing"
+                placeholder="Price:"
+                value={inputs.pricePerServing}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></input>
+              <input
+                className="Create__spoonacularScore"
+                type="number"
+                name="spoonacularScore"
+                placeholder="Spoon Score:"
+                value={inputs.spoonacularScore}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></input>
+              <input
+                className="Create__healthScore"
+                type="number"
+                name="healthScore"
+                placeholder="Health Score:"
+                value={inputs.healthScore}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></input>
+
+            </div>
+
+
+            <div className="Create__Capa__4">
+              <select
+                className="Create__Popular"
+                name="veryPopular"
+                type="select-multiple"
+                multiple={false}
+                placeholder="is this Popular?"
+                value={inputs.veryPopular}
+                onChange={evt =>
+                  setInputs({ ...inputs, [evt.target.name]: evt.target.value })
+                }
+              >
+                <option value={undefined}>Popular?</option>
+                <option value={true}>Yes!</option>
+                <option value={false}>Nope</option>
+              </select>
+              <select
+                className="Create__Vegetarian"
+                name="vegetarian"
+                type="select-multiple"
+                defaultValue={"Vegetarian"}
+                multiple={false}
+                placeholder="is this Vegetarian?"
+                value={inputs.vegetarian}
+                onChange={evt =>
+                  setInputs({ ...inputs, [evt.target.name]: evt.target.value })
+                }
+              >
+                <option value={undefined}>Vegetarian?</option>
+                <option value={true}>Yes!</option>
+                <option value={false}>Nope</option>
+              </select>
+              <select
+                className="Create__Vegan"
+                name="vegan"
+                type="select-multiple"
+                multiple={false}
+                placeholder="is this Vegan?"
+                value={inputs.vegan}
+                onChange={evt =>
+                  setInputs({ ...inputs, [evt.target.name]: evt.target.value })
+                }
+              >
+                <option value={undefined}>Vegan?</option>
+                <option value={true}>Yes!</option>
+                <option value={false}>Nope</option>
+              </select>
+              <select
+                className="Create__Gluten"
+                name="glutenFree"
+                type="select-multiple"
+                multiple={false}
+                placeholder="is this GlutenFree?"
+                value={inputs.glutenFree}
+                onChange={evt =>
+                  setInputs({ ...inputs, [evt.target.name]: evt.target.value })
+                }
+              >
+                <option value={undefined}>GlutenFree?</option>
+                <option value={true}>Yes!</option>
+                <option value={false}>Nope</option>
+              </select>
+
+            </div>
+
+
+            <div className="Create__Capa__5">
+
+              <textarea
+                className="Create__summary"
+                type="textarea"
+                name="summary"
+                placeholder="summary of the dish..."
+                value={inputs.summary}
+                onChange={(evt) => setInputs({ ...inputs, [evt.target.name]: evt.target.value })}
+              ></textarea>
+
+              <textarea
+                className="Create__analyzedInstructions"
+                type="textarea"
+                placeholder="type the step by step, then select the arrow and type the next step"
+                id="analyzedInstructions"
+                name="analyzedInstructions"></textarea>
+              <button
+                className="Create__analyzedInstructions__button"
+                type="button"
+                // value="button"
+                onClick={PushAnalized}>✔</button>
+
+
+
+
+              <button type="submit" className="Create__send">Order Now!</button>
+            </div>
+
+
+
+
           </div>
-          <div>
-            <button type="submit">Order Now!</button>
-          </div>
-
-
-
-
-
-
         </form>
       </div>
 
     </div>
   )
 
-}
+}//añadir un input y concatenarlo apra que se sume como se hace en quisines, para que cada que se le de al boton, el estado anterior se actualize con ese elemento nuevo

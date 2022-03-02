@@ -1,6 +1,6 @@
 .Background__Details {
     height: 100vh;
-    background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190628/ourmid/pngtree-cute-wind-single-dog-background-material-image_279150.jpg");
+    background-image: url("https://i.pinimg.com/originals/88/ef/22/88ef22ca3b16eb8a52006746e1d0c216.jpg");
     background-position: center;
     /* background-repeat: no-repeat; */
     background-size: cover;
@@ -34,7 +34,8 @@
     margin-top: 20px;
     overflow: overlay;
     width: 80vh;
-    height: 37vh;
+    height: 77vh;
+    background-color: rgba(212, 211, 144, 0.931);
   }
   
   ::-webkit-scrollbar {
@@ -59,24 +60,28 @@
   
   .Name__Details{
     font-size: 6vh;
+    font-weight: bold;
     font-family: 'Poppins', sans-serif;
   }
   
   .Released__Years{
     font-size: 2vh;
     padding-top: 25px;
+    font-weight: bold;
     font-family: 'Poppins', sans-serif;
   }
   
   .Width{
     font-size: 2vh;
     padding-top: 25px;
+    font-weight: bold;
     font-family: 'Poppins', sans-serif;
   }
   
   .Rating{
     font-size: 2vh;
     padding-top: 25px;
+    font-weight: bold;
     font-family: 'Poppins', sans-serif;
   }
   
@@ -88,15 +93,16 @@
   }
   
   .Details__rightdown{
-    border: 3px solid rgba(17, 17, 17, 0);
+    border: 3px solid rgb(17, 17, 17);
     position: absolute;
     border-radius: 6rem;
-    top: 36.5rem;
-    left: 81.5rem;
-    height: 19rem;
-    width: 27rem;
+    top: 1rem;
+    left: 10rem;
+    height: 4rem;
+    width: 40rem;
+    background-color: rgb(0, 0, 0);
   }
-  .Details__rightdown:hover{
+  .Details__rightdown__text:hover{
     transition: all 1s;
     border: 3px solid #904d1a9d;
     border-radius: 18rem;
@@ -105,10 +111,11 @@
   
   
   .Details__rightdown__text{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
-    top: 13.8rem;
-    left: 8rem;
+    color: hsl(145, 70%, 42%);
+    left: 10rem;
+    top: -1.5rem;
     position: absolute;
   }
   
