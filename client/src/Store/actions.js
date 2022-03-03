@@ -1,6 +1,7 @@
 import axios from "axios"
+// import fetch from "node-fetch"
 
-export const FoodsAll = () => {
+export const FoodsAll = () => { //async - await
     return async (dispatch) => {
         const response = await axios.get("http://localhost:3001/recipes")
         try {
@@ -15,24 +16,54 @@ export const FoodsAll = () => {
     }
 }
 
+// export const FoodsAll = () => { //promise
+//     return function (dispatch) {
+//         fetch(`http://localhost:3001/recipes`)
+//         .then((result) => result.json())
+//         .then((result)=> console.log(result))
+//         .then((daaata) => {
+//             dispatch({
+//                 type: "FOODSALL",
+//                 payload: {food: daaata}
+//             })
+//         })
+//     }
+// }
+
+
 export const SearchFood = (title) => {
     return async (dispatch) => {
-        const response = await axios.get(`http://localhost:3001/recipes?title=${title}`);
+        const response = await axios.get(`http://localhost:3001/recipes?title=${title}`); //query
         // console.log(response.data)
         if (response?.data) {
             dispatch({
-                type: "FOODSALL",
+                type: "SEARCHFOOD",
                 payload: { food: response.data },
             });
         }
     }
 }
 
+// export const SearchFood = (title) => { //promise
+//     return function (dispatch) {
+//         fetch(`http://localhost:3001/recipes?title=${title}`)
+//         .then((result) => result.json())
+//         .then((result)=> console.log(result))
+//         .then((daaata) => {
+//             dispatch({
+//                 type: "SEARCHFOOD",
+//                 payload: {food: daaata}
+//             })
+//         })
+//     }
+// }
+
+
 export const Detailed = (id) => {
     return async (dispatch) => {
         // console.log("existoooooo:")
-        const response = await axios.get(`http://localhost:3001/recipes/${id}`)
-        console.log("response:", response)
+        const response = await axios.get(`http://localhost:3001/recipes/${id}`) //params
+        // console.log("response:", response)
         if (response?.data) {
             dispatch({
                 type: "DETAILED",
@@ -41,6 +72,22 @@ export const Detailed = (id) => {
         }
     }
 }
+
+
+// export const Detailed = (id) => { //promise
+//     return function (dispatch) {
+//         fetch(`http://localhost:3001/recipes/${id}`)
+//         .then((result) => result.json())
+//         .then((result)=> console.log(result))
+//         .then((daaata) => {
+//             dispatch({
+//                 type: "DETAILED",
+//                 payload: {food: daaata}
+//             })
+//         })
+//     }
+// }
+
 
 export const GetDiets = (id) => {
     return async (dispatch) => {
@@ -54,6 +101,22 @@ export const GetDiets = (id) => {
         }
     }
 }
+
+// export const GetDiets = (id) => { //promise
+//     return function (dispatch) {
+//         fetch(`http://localhost:3001/diets`)
+//         .then((result) => result.json())
+//         .then((result)=> console.log(result))
+//         .then((daaata) => {
+//             dispatch({
+//                 type: "GETDIETS",
+//                 payload: {food: daaata}
+//             })
+//         })
+//     }
+// }
+
+
 export const GetCuisines = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`http://localhost:3001/cuisines`)
@@ -66,6 +129,22 @@ export const GetCuisines = (id) => {
         }
     }
 }
+
+// export const GetCuisines = (id) => { //promise
+//     return function (dispatch) {
+//         fetch(`http://localhost:3001/cuisines`)
+//         .then((result) => result.json())
+//         .then((result)=> console.log(result))
+//         .then((daaata) => {
+//             dispatch({
+//                 type: "GETCUISINES",
+//                 payload: {food: daaata}
+//             })
+//         })
+//     }
+// }
+
+
 export const GetDishTypes = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`http://localhost:3001/dishtypes`)
@@ -79,6 +158,20 @@ export const GetDishTypes = (id) => {
     }
 }
 
+// export const GetDishTypes = (id) => { //promise
+//     return function (dispatch) {
+//         fetch(`http://localhost:3001/dishtypes`)
+//         .then((result) => result.json())
+//         .then((result)=> console.log(result))
+//         .then((daaata) => {
+//             dispatch({
+//                 type: "GETDISHTYPES",
+//                 payload: {food: daaata}
+//             })
+//         })
+//     }
+// }
+
 export const Post = function (inputs) {
     return function (dispatch) {
         return axios.post("/create", inputs).then((response) => {
@@ -86,6 +179,7 @@ export const Post = function (inputs) {
         })
     }
 }
+
 
 export const Filtrated = (arg) => {
     return {
@@ -95,10 +189,6 @@ export const Filtrated = (arg) => {
 }
 
 export const DietFiltrated = (arg) => {
-    console.log("holiwis actions")
-    console.log("holiwis actions2")
-    console.log("holiwis action3s")
-    console.log("holiwis actions4")
     return {
       type: "DIETFILTRATED",
       payload: arg,

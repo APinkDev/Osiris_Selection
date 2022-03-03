@@ -5,9 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 
 const Details = (props) => {
-
-
-  // console.log("props", props)
   let id = props.match.params.id;
   console.log("id uwu", id)
   const dispatch = useDispatch();
@@ -51,26 +48,24 @@ const Details = (props) => {
     results.innerHTML = string;
     results.innerHTML = results.textContent;
   }
+
   let DietArray = []
   if (detailed.DietTypes) {
     DietArray = detailed.DietTypes && detailed.DietTypes.length ? detailed.DietTypes.map((e) => e.name) : detailed.DietTypes
   } else if (detailed.diets) {
-    DietArray = detailed.diets && detailed.diets.length ? detailed.diets.map((e) => e) : detailed.DietTypes
+    DietArray = detailed.diets && detailed.diets.length ? detailed.diets.map((e) => e) : detailed.diets
   }
+  
   let StepArray = []
   if (detailed.analyzedInstructions && isNaN(id) === false) {//cuando el ID es un numero
-    console.log("MEXICOOOOOOOOOO") 
+    // console.log("MEXICOOOOOOOOOO") 
     StepArray = detailed.analyzedInstructions && detailed.analyzedInstructions.length ? detailed.analyzedInstructions.map((e) => e) : detailed.analyzedInstructions
   }
   else if (detailed.analyzedInstructions && isNaN(id) === true) { //cuando el ID NO es un numero
-    console.log("ARGENTINAAAAA") 
+    // console.log("ARGENTINAAAAA") 
     StepArray = detailed.analyzedInstructions.split("||| ");
   }
 
-
-  // let DietArray = detailed.diets && detailed.diets.length? detailed.diets.map((e)=>e):detailed.DietTypes
-  // let GenArray = detailed.diets
-  console.log("ARRAYS: ", StepArray)
   let dishArray = []
   if (typeof (detailed.dishTypes) === "string" && detailed.dishTypes.includes(",")) {
     dishArray = detailed.dishTypes.split(",");

@@ -11,7 +11,7 @@ export default function Dietbuttom({ FiltratedDiets, GettingDiets }) {
     const handleOnSubmit = (evt) => {
         evt.preventDefault()
 
-        console.log(buton)
+        // console.log(buton)
         setTimeout(() => {
             FiltratedDiets(buton);
             setButon([]);

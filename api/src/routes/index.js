@@ -131,7 +131,7 @@ routes.route("/diets").get(async (req, res) => { //for in es para objetos y map 
   let check = await DietTypes.findAll();
 
   if (check.length === 0) {
-    let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
+    let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=0892681e63aa40408b5c947b8cc02a41&addRecipeInformation=true`)
     // console.log(tempApi)
     var tempList = await tempApi.data.results
       .map((n) => n.diets)
@@ -151,7 +151,7 @@ routes.route("/diets").get(async (req, res) => { //for in es para objetos y map 
 })
 
 routes.route("/dishtypes").get(async (req, res) => {
-  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
+  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=0892681e63aa40408b5c947b8cc02a41&addRecipeInformation=true`)
   var tempList = await tempApi.data.results
     .map((n) => n.dishTypes)
     .join()
@@ -167,7 +167,7 @@ routes.route("/dishtypes").get(async (req, res) => {
 })
 
 routes.route("/cuisines").get(async (req, res) => {
-  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
+  let tempApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=0892681e63aa40408b5c947b8cc02a41&addRecipeInformation=true`)
   var tempList = await tempApi.data.results
     .map((n) => n.cuisines)
     .join()

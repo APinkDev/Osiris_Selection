@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const { Recipe } = require("./db.js");
 const { DietTypes } = require("./db.js");
-//def5528726714b01b470f80fdc78405c
+//0892681e63aa40408b5c947b8cc02a41
 //def5528726714b01b470f80fdc78405c
 //0892681e63aa40408b5c947b8cc02a41
 //4bc14c003b50492b94515a76c80545c2
@@ -13,7 +13,7 @@ module.exports = {
     try {
       let cont = axios
         .get(
-          `https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`
+          `https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=0892681e63aa40408b5c947b8cc02a41&addRecipeInformation=true`
         )
         .then((resultado) => resultado.data.results)
         .then((res) => {
@@ -47,7 +47,7 @@ module.exports = {
   },
 
   askByName: async (title) => {
-    let cont = axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=def5528726714b01b470f80fdc78405c&addRecipeInformation=true`)
+    let cont = axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=0892681e63aa40408b5c947b8cc02a41&addRecipeInformation=true`)
       .then((resultado) => (resultado = resultado.data.results))
       .then((resort) => {
         let comida = [];
@@ -84,7 +84,7 @@ module.exports = {
   AskByID: (id) => {
     let cont = axios
       .get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=def5528726714b01b470f80fdc78405c`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=0892681e63aa40408b5c947b8cc02a41`
       )
       .then((result) => (result = result.data))
       // .then((result) => (console.log(result)))

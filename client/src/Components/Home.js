@@ -29,7 +29,7 @@ export default function Home() {
 
 
   const [container, setContainer] = useState([]);
-  console.log(container)
+  // console.log(container)
 
 
 
@@ -51,9 +51,9 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [foodsPerPage] = useState(9);
 
-  const indexOfLastPost = currentPage * foodsPerPage;
-  const indexOfFirstPost = indexOfLastPost - foodsPerPage;
-  const currentPost = container.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastPost = currentPage * foodsPerPage; //ej 9
+  const indexOfFirstPost = indexOfLastPost - foodsPerPage; //18
+  const currentPost = container.slice(indexOfFirstPost, indexOfLastPost); //9 per page per tier
 
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -62,8 +62,8 @@ export default function Home() {
     dispatch(Filtrated(arg))
   }
   const FiltratedDiets = (arg) => {
-    console.log("exaaisto");
-    console.log("exist222o");
+    // console.log("exaaisto");
+    // console.log("exist222o");
     dispatch(DietFiltrated(arg));
   };
 

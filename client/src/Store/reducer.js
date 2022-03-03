@@ -11,7 +11,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "FOODSALL": {
-      console.log(action.payload.food)
+      // console.log(action.payload.food)
       state = initialState;
       return {
         ...state,
@@ -136,12 +136,6 @@ const reducer = (state = initialState, action) => {
     case "DIETFILTRATED": {
 
       let checker = (elm, action) => action.every(v => elm.includes(v))
-      // for (let i = 0; i < action.length; i++) {
-      //   if (elm.includes(action[i])) {
-      //     return true;
-      //   }
-      // }
-
 
       var foodfinale = []
       if (state.Filtred.length === 0) {

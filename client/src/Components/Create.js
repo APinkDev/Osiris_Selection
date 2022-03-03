@@ -98,19 +98,15 @@ export default function Create() {
 
   const PushAnalized = (e) => {
     let FinalAnalized = document.getElementById('analyzedInstructions')
-    console.log(FinalAnalized.value)
-    // setInputs({ ...inputs, [evt.target.analyzedInstructions]: inputs.analyzedInstructions.concat(evt.target.value) })
     setInputs({ ...inputs, [FinalAnalized.name]: inputs.analyzedInstructions.concat(FinalAnalized.value) })
+    FinalAnalized.value = ""
   }
-  console.log("inputs de steps", inputs.cuisines)
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
     let error = Object.keys(Validate(inputs))
     if (error.length !== 0) {
-      // console.log("resultado final malo: ", inputs )
-      // console.log("error", error)
+
       alert('Please fill the options~')
     }
     else {
